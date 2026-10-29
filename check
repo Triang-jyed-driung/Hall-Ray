@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd -- "$(dirname -- "$0")"
+
+# Prefer the toolchain pinned in lean/lean-toolchain. Support the existing
+# local alias without requiring other contributors to install that alias.
+if [[ -z "${ELAN_TOOLCHAIN:-}" ]] && command -v elan >/dev/null 2>&1; then
+  if elan toolchain list | grep -Eq '^lean-4\.35\.0([[:space:]]|$)'; then
+    export ELAN_TOOLCHAIN=lean-4.35.0
+  fi
+fi
+
+printf '\n== Lean: build and axiom audit ==\n'
+(
+  cd lean
+  lake build
+  lake env lean ProofAudit.lean
+)
+
+printf '\n== Rocq: build and kernel check ==\n'
+make -C rocq check

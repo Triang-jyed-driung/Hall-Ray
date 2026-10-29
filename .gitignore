@@ -1,0 +1,33 @@
+# Lean / Lake dependencies and build products
+.lake/
+*.olean
+*.olean.*
+*.ilean
+*.trace
+
+# Rocq compiled proofs and generated metadata
+*.vo
+*.vos
+*.vok
+*.vio
+*.glob
+.*.aux
+.lia.cache
+.nia.cache
+.nra.cache
+.coq-native/
+
+# Local experiments and verification logs
+/.scratch/
+*.log
+
+# Reference material kept locally, not distributed
+/paper/
+/arXiv-*.tar.gz
+
+# Editor and OS temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

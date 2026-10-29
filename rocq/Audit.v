@@ -1,0 +1,174 @@
+From HallRay Require Import MatrixAlgebra ReturnBranches ReturnIdentity
+  Contraction StableBranches SymbolicCoding ScalarEstimates ConstantReturn FiberProducts
+  EuclideanNorm ConcreteCocycle SymbolicCocycle MatrixLimits DefectLimit ConstantCoding
+  RealIntervals DefectCertificate DefectNoncommuting EllipticConjugacy DefectPhases PeriodicReturns EllipticPowers IntegralCubic
+  IntegralMatrices MarkedCocycle ReturnInfiniteOrder
+  RealRotationDensity TrigRotations RotationDensity EllipticRecurrence
+  StableCoding TwoSidedCoding NormalizedFlow LatticeReturns LatticeBasis LatticeOrbit
+  Concatenation PaperTarget NormGeometry DaniCorrespondence LatticeSystole DaniSystole
+  SystoleContinuity SystoleCurves StableForgetting ApproximationRealization
+  PeriodicWords PeriodicOrbits PeriodicHeights LimitingWords LimitingFibers
+  LimitingConvergence Matrix3Limits LimitingRepresentatives CompactMatrices
+  PositionalSubsequences PositionalLimits ChartCompactness EllipticContinuity
+  RoofLimits LimitingFamilies SegmentLimits PeakUpperLimits CirclePeaks
+  LowerApproximations PeakConvergence PeakContinuity PeakLocalContinuity
+  BulkFlow RotationAlignment ContractingCircle CuspVectors ParabolicDepth
+  ParabolicPhases PeakPhasePath PhaseHeightRange AdjustedPeriodicPeaks
+  UniformEllipticPowers BlockSelection IntervalPeaks ReturnSegmentPeaks
+  UniformSegmentComparison ReturnBlocks BlockRealization
+  WordPrefixes PrefixFibers NestedWords BlockConstruction ConstructedWords
+  BoundaryWords ConstructedCodes ConstructedFibers ConstructedPeaks HallRayTheorem.
+
+(* The main theorem for arbitrary planar norms is proved by hall_ray.
+   The stronger arbitrary-height theorem and torus immersion statements are
+   outside this theorem's scope. Integrality replaces the Galois argument.
+   The assumptions printed below are Stdlib classical real analysis, choice,
+   and functional extensionality; there are no project-specific axioms. *)
+
+Print Assumptions raw_marked_return_a.
+Print Assumptions raw_marked_return_b.
+Print Assumptions forgetting_past_factorization.
+Print Assumptions phi_a_contraction.
+Print Assumptions psi_a_contraction.
+Print Assumptions psi_b_contraction.
+Print Assumptions coded_converges.
+Print Assumptions coded_recursion.
+Print Assumptions coded_future_injective.
+Print Assumptions common_future_estimate.
+Print Assumptions balanced_vector_minimum.
+Print Assumptions constant_root_exists.
+Print Assumptions constant_root_isolation.
+Print Assumptions constant_elliptic_return_exists.
+Print Assumptions nonorthogonal_amplitude.
+Print Assumptions uniform_fiber_bound.
+Print Assumptions euclidean_matrix_norm.
+Print Assumptions normalized_a_lipschitz.
+Print Assumptions normalized_a_uniform_bounds.
+Print Assumptions normalized_b_lipschitz.
+Print Assumptions normalized_b_uniform_bounds.
+Print Assumptions symbolic_uniform_fiber_bound.
+Print Assumptions fiber_product_inverse_identity.
+Print Assumptions euclidean_matrix_complete.
+Print Assumptions geometric_matrix_convergence.
+Print Assumptions defect_limit_exists.
+Print Assumptions finite_defect_commutator_certificate.
+Print Assumptions defect_limit_noncommuting.
+Print Assumptions elliptic_conjugacy.
+Print Assumptions rotation_defect_nonorthogonal.
+Print Assumptions defect_trace_amplitude.
+Print Assumptions zero_trace_phase_elliptic.
+Print Assumptions elliptic_phase_open.
+Print Assumptions periodic_return_asymptotic_bound.
+Print Assumptions partial_period_uniform_bound.
+Print Assumptions periodic_cycle_products.
+Print Assumptions periodic_returns_elliptic_at_phase_limit.
+Print Assumptions elliptic_powers_bounded.
+Print Assumptions elliptic_periodic_fibers_bounded.
+Print Assumptions rational_monic_cubic_root_integral.
+Print Assumptions integral_characteristic_no_double_contraction.
+Print Assumptions marked_cocycle_product.
+Print Assumptions marking_product_integral.
+Print Assumptions cyclic_cocycle_infinite_order.
+Print Assumptions constant_return_infinite_order.
+Print Assumptions periodic_return_infinite_order.
+Print Assumptions constant_rotation_infinite_order.
+Print Assumptions irrational_forward_rotation_dense_late.
+Print Assumptions special_orthogonal_powers_dense_late.
+Print Assumptions elliptic_phase_realized_by_periodic_returns.
+Print Assumptions arbitrarily_large_elliptic_returns.
+Print Assumptions periodic_return_recurrent.
+Print Assumptions stable_coded_recursion.
+Print Assumptions v_code_recursion.
+Print Assumptions normalized_marked_return_a.
+Print Assumptions normalized_marked_return_b.
+Print Assumptions orbit_return_identity.
+Print Assumptions complete_forward_return_system.
+Print Assumptions unimodular_marking_preserves_lattice.
+Print Assumptions complete_lattice_orbit_cover.
+Print Assumptions block_maxima_limsup.
+Print Assumptions limsup_stable_under_vanishing_error.
+Print Assumptions positive_constant_irrational.
+Print Assumptions approximation_constant_unique.
+Print Assumptions rational_constant_zero.
+Print Assumptions planar_norm_lipschitz.
+Print Assumptions planar_norm_equivalence.
+Print Assumptions bounded_denominator_escape.
+Print Assumptions balancing_scales_escape.
+Print Assumptions systole_marking_invariant.
+Print Assumptions dani_correspondence.
+Print Assumptions systole_positive.
+Print Assumptions systole_continuous.
+Print Assumptions systole_uniform_continuity.
+Print Assumptions systole_left_relative_continuity.
+Print Assumptions compact_curve_systole_bounds.
+Print Assumptions compact_curve_height_maximum.
+Print Assumptions flow_systole_continuous.
+Print Assumptions forgetting_symbolic_past.
+Print Assumptions finite_height_limsup_irrational.
+Print Assumptions symbolic_height_realizes_constant.
+Print Assumptions hall_ray_from_symbolic_heights.
+Print Assumptions periodic_forward_orbit_cover.
+Print Assumptions elliptic_periodic_height_bounded.
+Print Assumptions periodic_peak_is_limsup.
+Print Assumptions periodic_repetition_choice.
+Print Assumptions periodic_block_peak_attained.
+Print Assumptions periodic_beginning_codes.
+Print Assumptions periodic_ending_codes.
+Print Assumptions periodic_bulk_codes.
+Print Assumptions defect_suffixes_and_inverses_bounded.
+Print Assumptions periodic_beginning_code_limits.
+Print Assumptions periodic_ending_code_limits.
+Print Assumptions periodic_bulk_code_limits.
+Print Assumptions orbit_frame_sequence_limit.
+Print Assumptions beginning_height_limit.
+Print Assumptions ending_height_limit.
+Print Assumptions bulk_height_limit.
+Print Assumptions bounded_unimodular3_subsequence.
+Print Assumptions periodic_positions_subsequence.
+Print Assumptions periodic_returns_matrix_limit.
+Print Assumptions bounded_periodic_positions_compact.
+Print Assumptions bounded_flowing_charts_subsequence.
+Print Assumptions bounded_periodic_representative_heights.
+Print Assumptions oriented_elliptic_basis_sequence_limit.
+Print Assumptions elliptic_circles_upper_limit.
+Print Assumptions elliptic_circles_lower_limit.
+Print Assumptions orbit_roof_from_current_codes.
+Print Assumptions orbit_roof_sequence_limit.
+Print Assumptions limiting_height_values_bounded.
+Print Assumptions periodic_segment_family_upper_limit.
+Print Assumptions periodic_peaks_upper_limit.
+Print Assumptions periodic_peak_bounds_circle.
+Print Assumptions limiting_model_height_lower_approximation.
+Print Assumptions periodic_peaks_converge.
+Print Assumptions periodic_peak_approximation_at_phase.
+Print Assumptions limiting_peaks_joint_sequence_limit.
+Print Assumptions parameter_peak_joint_continuity.
+Print Assumptions bulk_forward_flow_cover.
+Print Assumptions rotation_aligns_vectors.
+Print Assumptions elliptic_circle_contracts_after_rotation.
+Print Assumptions bulk_fiber_small_vector.
+Print Assumptions limiting_peak_parabolic_scale_bound.
+Print Assumptions limiting_peaks_diverge_at_parabolic.
+Print Assumptions parabolic_endpoint_positive.
+Print Assumptions parabolic_phase_heights_diverge.
+Print Assumptions phase_height_realizes_levels.
+Print Assumptions adjusted_periodic_peak_choice.
+Print Assumptions periodic_fibers_uniform_trace_margin.
+Print Assumptions adjusted_repeated_block_choice.
+Print Assumptions interval_peaks_sequence_limit.
+Print Assumptions return_segment_peaks_uniform_continuity.
+Print Assumptions uniform_return_block_comparison.
+Print Assumptions periodic_block_peak_returns.
+Print Assumptions block_controls_realize_height.
+Print Assumptions block_controls_realize_approximation.
+
+Print Assumptions nested_stage_fiber_error.
+Print Assumptions infinite_block_states.
+Print Assumptions construction_local_future_agreement.
+Print Assumptions construction_block_codes.
+Print Assumptions construction_cumulative_fiber_error.
+Print Assumptions constructed_block_comparison_radius.
+Print Assumptions symbolic_height_ray.
+Print Assumptions hall_ray.
+Check symbolic_height_ray : symbolic_height_ray_claim.
+Check hall_ray : hall_ray_claim.
